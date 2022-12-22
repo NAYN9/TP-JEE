@@ -1,0 +1,40 @@
+<div class="alert alert-primary mt-4 container" style="text-align: center;" role="alert">
+    <b>List of all Bills for customer</b>
+   </div>
+  
+   <div class="card mt-4 container">
+  
+  
+     <hr>
+     <br>
+  
+     <table class="table" *ngIf="orders">
+       <thead>
+         <tr class="bg-success text-white">
+           <th>#</th>
+           <th>Date</th>
+          <th>customer ID</th>
+          <th>Details</th>
+          <th>Delete</th>
+         </tr>
+  
+       </thead>
+       <tbody>
+         <tr *ngFor="let o of orders._embedded.bills">
+           <td>{{o.id}}</td>
+           <td style="color: green;"><b>{{o.billingDate | date:'dd/MM/yyyy'}}</b></td>
+           <td>{{o.customerID}}</td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="getOrderDetails(o)">Bill Details</button>
+          </td>
+          <!-- <td>
+            <button type="button" class="btn btn-danger" (click)="delete(o.id)">Delete Bill</button>
+          </td> -->
+  
+         </tr>
+       </tbody>
+     </table>
+   </div>
+  
+  
+  

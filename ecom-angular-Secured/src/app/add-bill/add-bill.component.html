@@ -1,0 +1,58 @@
+<div class="alert alert-success container mt-3" role="alert">
+    Welcome to <b>Add Bill</b>!
+   </div>
+  <div class="container" *ngIf="customers" >
+    <h3 style="text-align: center;"><b >Add new bill </b> </h3>
+    <form class="row g-6" [formGroup]="billFormGroup"  (ngSubmit)="save()">
+  
+      <div style="text-align: right;">
+        <button type="submit" class="btn btn-success mb-3" style="color: white;"> <b> Add Bill</b>
+        </button>
+  
+      </div>
+      <br><br><hr>
+      <b>Select customer <img src="https://img.icons8.com/fluency/512/search-client.png" width="20px" alt=""> </b>
+      <div class="" style="text-align: center;">
+  
+        <select class="form-select" aria-label="Default select example" formControlName="customerID">
+          <option selected disabled>Select customers</option>
+          <option *ngFor="let c of customers._embedded.customers" value={{c.id}}>{{c.name}}</option>
+  
+        </select>
+  
+      </div>
+      <br>
+  
+      <br><br>
+      <b style="text-align: center;"> Select products  </b>
+      <br><br>
+      <div class="col-auto" >
+  <div class="row" *ngIf="products">
+    <div class="col" *ngFor="let p of products._embedded.products">
+      <div class="card" style="width: 15rem; box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;"  >
+  
+        <div class="card-body">
+          <h5 class="card-title">{{p.name}}</h5><hr>
+          <p class="card-text"><b style="color: green;">price: <img src="https://img.icons8.com/fluency/512/us-dollar-circled.png" width="20px" alt="">{{p.prix}}</b>
+            &nbsp;
+            <b><img src="https://img.icons8.com/fluency/512/sell-stock.png" width="20px" alt=""> {{p.qte}}</b>
+          </p><br>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="productIDs" formControlName="productIDs" (change)="test($event,p)"  >
+            <label class="form-check-label" for="flexSwitchCheckDefault" style="color: blue;"> Add to Cart</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+      </div>
+  
+  
+    </form>
+  
+  </div>
+  

@@ -1,0 +1,56 @@
+<div class="alert alert-primary mt-4 container" style="text-align: center;" role="alert">
+    <b>List of all customers</b>
+   </div>
+  
+   <div class="card mt-4 container">
+     <div class="card-body">
+       <div class="alert alert-success"  role="alert">
+        <b>Add new Customer</b>
+       </div>
+     </div>
+     <div class="container">
+       <div class="row g-3 align-items-center">
+         <div class="col-auto">
+           <input type="text" id="inputPassword6" class="form-control" placeholder="Name"  #cn>
+         </div>
+         <div class="col-auto">
+           <input type="email" id="inputPassword6" class="form-control" placeholder="Email" #ce>
+         </div>
+  
+         <div class="col-auto">
+           <button type="button" class="btn btn-primary"  (click)="create(cn.value,ce.value)">Save customer</button>
+     </div>
+       </div>
+     </div>
+     <hr>
+     <br>
+  
+     <table class="table" *ngIf="customers">
+       <thead>
+         <tr class="bg-success text-white">
+           <th>#</th>
+           <th>Name</th>
+           <th>Email</th>
+           <th>Remove</th>
+           <th>Bill</th>
+         </tr>
+  
+       </thead>
+       <tbody>
+         <tr *ngFor="let c of customers._embedded.customers">
+           <td>{{c.id}}</td>
+           <td><b>{{c.name}}</b></td>
+           <td style="color: green;"><b>{{c.email}}</b></td>
+  
+           <td>
+             <button type="button" class="btn btn-danger" (click)="delete(c.id)">Remove</button>
+           </td>
+           <td>
+            <button type="button" class="btn btn-warning" routerLink="/bills" (click)="getOrders(c)">Show bill</button>
+          </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+  
+  

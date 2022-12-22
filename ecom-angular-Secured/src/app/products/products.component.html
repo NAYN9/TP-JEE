@@ -1,0 +1,55 @@
+<div class="alert alert-primary mt-4 container" style="text-align: center;" role="alert">
+    <b>List of all products</b>
+   </div>
+   
+   <div class="card mt-4 container">
+     <div class="card-body">
+       <div class="alert alert-success"  role="alert">
+        <b>Add new Product</b>
+       </div>
+     </div>
+     <div class="container">
+       <div class="row g-3 align-items-center">
+         <div class="col-auto">
+           <input type="text" id="inputPassword6" class="form-control" placeholder="Name" #pn>
+         </div>
+         <div class="col-auto">
+           <input type="number" id="inputPassword6" class="form-control" placeholder="Price" #pp>
+         </div>
+         <div class="col-auto">
+           <input type="number" id="inputPassword6" class="form-control" placeholder="Quantity" #pq>
+         </div>
+         <div class="col-auto">
+           <button type="button" class="btn btn-success" (click)="create(pn.value,pp.value,pq.value)">Add product</button>
+     </div>
+       </div>
+     </div>
+     <hr>
+     <br>
+   
+     <table class="table" *ngIf="products">
+       <thead>
+         <tr class="bg-primary text-white">
+           <th>#</th>
+           <th>Name</th>
+           <th>Price</th>
+           <th>Quantity</th>
+           <th>Action</th>
+         </tr>
+   
+       </thead>
+       <tbody>
+         <tr *ngFor="let p of products._embedded.products">
+           <td>{{p.id}}</td>
+           <td><b>{{p.name}}</b></td>
+           <td style="color: green;"><b>{{p.prix}}</b> MAD</td>
+           <td>{{p.qte}}</td>
+           <td>
+             <button type="button" class="btn btn-danger" (click)="delete(p.id)">Remove</button>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   
+   
